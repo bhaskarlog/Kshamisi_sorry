@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sorry Garima ❤️</title>
+ 
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+ 
+body{
+background:linear-gradient(135deg,#2b0036,#5a006d,#7b008f);
+height:100vh;
+overflow:hidden;
+display:flex;
+justify-content:center;
+align-items:center;
+color:white;
+}
+ 
+.page{
+display:none;
+text-align:center;
+width:90%;
+max-width:500px;
+animation:fadeIn 1s;
+}
+ 
+.active{
+display:block;
+}
+ 
+h1{
+font-size:2.2rem;
+margin-bottom:15px;
+}
+ 
+.subtitle{
+opacity:.8;
+margin-bottom:20px;
+}
+ 
+.btn{
+background:#ff1493;
+border:none;
+padding:15px 35px;
+border-radius:40px;
+color:white;
+font-size:18px;
+cursor:pointer;
+box-shadow:0 0 20px #ff1493;
+transition:.3s;
+}
+ 
+.btn:hover{
+transform:scale(1.08);
+}
+ 
+.cute{
+width:150px;
+margin-bottom:20px;
+filter:drop-shadow(0 0 20px white);
+}
+ 
+.progress-container{
+width:100%;
+height:15px;
+background:rgba(255,255,255,.2);
+border-radius:50px;
+margin:20px 0;
+overflow:hidden;
+}
+ 
+.progress{
+height:100%;
+width:0%;
+background:#ff1493;
+border-radius:50px;
+transition:2s;
+}
+ 
+.card{
+background:rgba(255,255,255,.1);
+padding:18px;
+border-radius:15px;
+margin:12px 0;
+backdrop-filter:blur(10px);
+}
+ 
+.envelope{
+font-size:100px;
+cursor:pointer;
+animation:bounce 1.5s infinite;
+}
+ 
+.note{
+background:white;
+color:#444;
+padding:25px;
+border-radius:20px;
+line-height:1.8;
+}
+ 
+.heart{
+position:absolute;
+color:pink;
+animation:float 8s linear infinite;
+}
+ 
+@keyframes float{
+0%{transform:translateY(100vh);}
+100%{transform:translateY(-100vh);}
+}
+ 
+@keyframes fadeIn{
+from{opacity:0}
+to{opacity:1}
+}
+ 
+@keyframes bounce{
+50%{transform:translateY(-10px)}
+}
+</style>
+</head>
+<body>
+ 
+<div id="page1" class="page active">
+<div class="emoji"><span style="font-size:100px;">🐥</span></div>
+<h1>Hey Garima, Cutiepie ❤️</h1>
+<p class="subtitle">Do you even know how cute you are?</p>
+<button class="btn" onclick="nextPage(2)">Let's Check 🥰</button>
+</div>
+ 
+<div id="page2" class="page">
+<h1 id="percent">0%</h1>
+ 
+<div class="progress-container">
+<div class="progress" id="bar"></div>
+</div>
+ 
+<p>⚠ Warning: Too Cute To Handle</p>
+ 
+<br>
+<button class="btn" onclick="nextPage(3)">Continue ➜</button>
+</div>
+ 
+<div id="page3" class="page">
+<h1>Tap each one to reveal 💖</h1>
+ 
+<div class="card">
+I messed up... and I'm really sorry for that.
+</div>
+ 
+<div class="card">
+I promise I'll be better for you.
+</div>
+ 
+<div class="card">
+Please forgive me... You mean so much to me.
+</div>
+ 
+<br>
+ 
+<button class="btn" onclick="nextPage(4)">
+Explore More ➜
+</button>
+</div>
+ 
+<div id="page4" class="page">
+<h1>A Little Note For You 💌</h1>
+ 
+<div class="envelope" onclick="nextPage(5)">
+✉️
+</div>
+ 
+<p>Tap to Open</p>
+</div>
+ 
+<div id="page5" class="page">
+<h1>A Little Note For You</h1>
+ 
+<div class="note">
+<div class="emoji"><span style="font-size:30px;">😞</span></span></div>
+<p>
+I'm really sorry, Garima. ❤️
+</p>
+ 
+<br>
+ 
+<p>
+I accidentally upset one of the most precious and adorable people in my life — you.
+<br>
+Please forgive me if I hurt you or wasted even a little of your precious time.
+<br>
+I promise I never meant to hurt you.
+<br>
+You mean a lot to me and I genuinely miss your smile. 🥺💕
+<br>
+</p>
+ 
+
+</div>
+ 
+<br>
+ 
+<button class="btn">
+Made With Love ❤️
+</button>
+ 
+</div>
+ 
+<script>
+ 
+function nextPage(page){
+ 
+document.querySelectorAll('.page').forEach(p=>{
+p.classList.remove('active');
+});
+ 
+document.getElementById('page'+page).classList.add('active');
+ 
+if(page===2){
+animateProgress();
+}
+}
+ 
+function animateProgress(){
+ 
+let percent=0;
+ 
+let interval=setInterval(()=>{
+ 
+percent++;
+ 
+document.getElementById("percent").innerHTML=percent+"%";
+document.getElementById("bar").style.width=Math.min(percent,100)+"%";
+ 
+if(percent>=120){
+clearInterval(interval);
+}
+ 
+},20);
+}
+ 
+function createHeart(){
+ 
+let heart=document.createElement("div");
+ 
+heart.classList.add("heart");
+ 
+heart.innerHTML="💖";
+ 
+heart.style.left=Math.random()*100+"vw";
+ 
+heart.style.fontSize=(20+Math.random()*20)+"px";
+ 
+document.body.appendChild(heart);
+ 
+setTimeout(()=>{
+heart.remove();
+},8000);
+}
+ 
+setInterval(createHeart,500);
+ 
+</script>
+ 
+</body>
+</html>
